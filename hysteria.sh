@@ -1,19 +1,21 @@
 #!/bin/bash
-mkdir /root/hy1
-cd /root/hy1
-ARCH=$(uname -m)
-if [[ "$ARCH" == "x86_64" ]]; then
-  echo "检测到的架构: $ARCH"
-  wget https://github.com/apernet/hysteria/releases/download/v1.3.3/hysteria-linux-amd64 -O hysteria
-  chmod +x hysteria
-elif [[ "$ARCH" == "aarch64" ]]; then
-  echo "检测到的架构: $ARCH"
-  wget https://github.com/apernet/hysteria/releases/download/v1.3.3/hysteria-linux-arm64 -O hysteria
-  chmod +x hysteria
-else
-  echo "检测到的架构: $ARCH"
-fi
 
+# 创建hy文件夹
+mkdir hy
+
+# 下载文件并更改权限
+if [[ $(uname -m) == "x86_64" ]]; then
+	echo "检测到的架构: $(uname -m)"
+    wget -O hy/hysteria https://github.com/apernet/hysteria/releases/download/v1.3.3/hysteria-linux-amd64
+    chmod 755 hy/hysteria
+elif [[ $(uname -m) == "aarch64" ]]; then
+	echo "检测到的架构: $(uname -m)"
+    wget -O hy/hysteria https://github.com/apernet/hysteria/releases/download/v1.3.3/hysteria-linux-arm64
+    chmod 755 hy/hysteria
+else
+    echo "此脚本不支持当前的CPU架构"
+fi
+cd hy
 openssl ecparam -genkey -name prime256v1 -out ca.key
 openssl req -new -x509 -days 36500 -key ca.key -out ca.crt  -subj "/CN=bing.com"
 echo "创建自签证书"
@@ -43,8 +45,8 @@ echo "config.json 服务端配置写入"
 ipv4=$(curl -s https://api.ipify.org)
 echo "本机外网IPv4为：$ipv4"
 
-touch $ipv4'-ipv4'.json
-ipv4='
+touch ipv4.json
+ip='
 {
 "server": "'$ipv4':9669",
 "protocol": "udp",
@@ -73,8 +75,10 @@ ipv4='
 }
 '
 # 将内容写入文件
-echo "$ipv4" > $ipv4'ipv4'.json
+echo "$ip" > ipv4.json
 # 输出结果
 echo "ipv4客户端配置写入"
-#运行
-./hysteria -c config.json server
+
+echo "运行请用以下代码"
+echo "cd hy"
+echo "./hysteria -c config.json server"
