@@ -76,5 +76,5 @@ ipv4='
 echo "$ipv4" > $ipv4'ipv4'.json
 # 输出结果
 echo "ipv4客户端配置写入"
-
+#运行
 ./hysteria -c config.json server
