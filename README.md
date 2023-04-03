@@ -11,6 +11,8 @@ wget https://github.com/lele1894/hy/releases/download/hysteria/hysteria.sh && ch
 cd hy
 ./hysteria -c config.json server
 ```
+![Bench](说明1.png)
+
 /root/hy文件夹里生成的ipv4.json下载到本地，导入v2rayn.
 
 ![Bench](说明.png)
