@@ -6,11 +6,11 @@ mkdir hy
 # 下载文件并更改权限
 if [[ $(uname -m) == "x86_64" ]]; then
 	echo "检测到的架构: $(uname -m)"
-    wget -O hy/hysteria https://github.com/apernet/hysteria/releases/download/v1.3.3/hysteria-linux-amd64
+    wget -O hy/hysteria https://github.com/apernet/hysteria/releases/download/v1.3.4/hysteria-linux-amd64
     chmod 755 hy/hysteria
 elif [[ $(uname -m) == "aarch64" ]]; then
 	echo "检测到的架构: $(uname -m)"
-    wget -O hy/hysteria https://github.com/apernet/hysteria/releases/download/v1.3.3/hysteria-linux-arm64
+    wget -O hy/hysteria https://github.com/apernet/hysteria/releases/download/v1.3.4/hysteria-linux-arm64
     chmod 755 hy/hysteria
 else
     echo "此脚本不支持当前的CPU架构"
