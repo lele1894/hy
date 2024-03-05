@@ -4,11 +4,11 @@
 if [[ $(uname -m) == "x86_64" ]]; then
 	echo "检测到的架构: $(uname -m)"
     wget -O hysteria https://github.com/apernet/hysteria/releases/download/v1.3.5/hysteria-linux-amd64
-    chmod 755 hy/hysteria
+    chmod 755 hysteria
 elif [[ $(uname -m) == "aarch64" ]]; then
 	echo "检测到的架构: $(uname -m)"
     wget -O hysteria https://github.com/apernet/hysteria/releases/download/v1.3.5/hysteria-linux-arm64
-    chmod 755 hy/hysteria
+    chmod 755 hysteria
 else
     echo "此脚本不支持当前的CPU架构"
 fi
