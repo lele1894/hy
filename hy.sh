@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# 创建hy文件夹
-mkdir hy
-
 # 下载文件并更改权限
 case $(uname -m) in
     x86_64)
